@@ -1,0 +1,3 @@
+[submodule "pagen"]
+	path = pagen
+	url = git@github.com:Sandwall/pagen.git
