@@ -16,28 +16,28 @@
 
     <div id="central_holder">
         <div class="central_section">
-            <div class="">
-                <h1>Hi!</h1>
-
-            </div>
+            <h1>Hi!</h1>
             <p>
-                My name is <i>Arav Sanwal</i>, I'm a 3rd-year undergraduate student at
-                <i>Rutgers University,</i> majoring in <b>Computer Science</b> and
-                <b>Mathematics</b>, and minoring in <b>Economics</b>.
+                My name is <i>Arav Sanwal</i>, I'm a 4th-year undergraduate student at <i>Rutgers University,</i>
+                majoring in <b>Computer Science</b> and <b>Mathematics</b>, and minoring in <b>Economics</b>.
             </p>
             <p>
-                I love building software that is interesting to myself and other people,
-                and as a musician that writes/produces original songs, music technology
-                like synthesizers and effects fit into this category pretty neatly.
+                I love building software that is interesting to myself and other people, and as a musician that
+                writes/produces original songs, music technology like synthesizers and effects fit into this category
+                pretty neatly.
             </p>
         </div>
-        <!-- TODO: the "Projects" section was here, it might be a good idea to pull
-         the data directly from GitHub in some inlined JS running at page load
-         that dynamically creates the section -->
+        <div class="central_section" id="projects_section">
+            <h1>Projects</h1>
+            <p class="text-center">Here are 6 public GitHub repositories I've been working on recently:</p>
+            <br />
+            <div id="projects_container">
+            </div>
+        </div>
         <div class="central_section">
             <h1>Contact</h1>
-            <p>I am currently seeking Computer Science internships for the Summer 2025 period,
-                so please get in touch if my skills are what you're looking for!</p>
+            <p>I am currently seeking Computer Science internships starting in the Summer 2026 period, so please get in
+                touch if my skills are what you're looking for!</p>
             <div class="code_block">
                 <p>Email: arav @ sanwal dot dev</p>
                 <ul>
@@ -47,6 +47,7 @@
             </div>
         </div>
     </div>
+    <script src="./resources/github-fetch.js"></script>
 </body>
 
 </html>

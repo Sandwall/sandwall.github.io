@@ -1,3 +1,26 @@
+/* CSS Variables */
+:root {
+    --color-bg-primary: #0d0d0d;
+    --color-bg-secondary: #1a1a1a;
+    --color-bg-tertiary: #2a2a2a;
+    --color-border: #404040;
+    --color-text-primary: #e8e8e8;
+    --color-text-secondary: #b8b8b8;
+    --color-link: #c0e0ff;
+    --color-link-hover: #808080;
+    --color-shadow: rgba(0, 0, 0, 0.5);
+
+    --spacing-xs: 4pt;
+    --spacing-sm: 8pt;
+    --spacing-md: 16pt;
+    --spacing-lg: 32pt;
+    --spacing-xl: 50pt;
+
+    --border-radius: 4pt;
+    --transition-speed: 0.15s;
+}
+
+/* Fonts */
 @font-face {
     font-family: titleFonts;
     font-weight: 400;
@@ -6,31 +29,72 @@
 
 @font-face {
     font-family: plex;
-    font-weight: 400;
-    src: url("IBMPlexSansCondensed-Regular.woff2") format('woff2');
+    font-weight: 300;
+    src: url("IBMPlexSerif-Light.ttf");
 }
 
 @font-face {
-	font-family: iosevka;
-	font-display: swap;
-	font-weight: 400;
-	font-stretch: normal;
-	font-style: normal;
-	src: url('IosevkaFixedSS14-Regular.woff2') format('woff2');
+    font-family: iosevka;
+    font-display: swap;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    src: url('IosevkaFixedSS14-Regular.woff2') format('woff2');
+}
+
+/* Base */
+
+html {
+    background: radial-gradient(circle at top, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
 }
 
 body {
-    color: white;
-    /* background-color: #1a1a1a; */
-    background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+    color: var(--color-text-primary);
+    background: radial-gradient(circle at top, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
     margin: 0;
-
-    font-family: plex;
+    padding-top: 36pt;
+    /* Add padding equal to menu bar height */
+    font-family: plex, serif;
     font-size: 14pt;
-
-    line-height: 150%;
+    line-height: 1.6;
 }
 
+/* Text Elements */
+h1,
+h2,
+h3 {
+    font-family: titleFonts, serif;
+    margin: 0;
+}
+
+h1 {
+    font-size: 32pt;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24pt;
+}
+
+p,
+a {
+    margin: var(--spacing-md) var(--spacing-md) 0 0;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--color-link-hover);
+}
+
+/* Images */
 img {
     display: block;
     margin-left: auto;
@@ -38,121 +102,112 @@ img {
     width: 40%;
 }
 
-h1, h2, h3 {
-    font-family: titleFonts;
-    margin: 0pt;
-}
-
-h1 {
-    font-size: 32pt;
-    margin: 1rem 0pt;
-    text-align: center;
-}
-
-h2, p, a {
-    margin: 16pt 16pt 0pt 0pt;
-}
-
-a {
-    color: #d7fffc;
-    transition: color 0.1s ease 0s;
-}
-
-a:hover {
-    color: gray;
-}
-
-/* this is a box that holds central sections */
+/* General Layout */
 #central_holder {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50pt 16pt 16pt 16pt;
+    margin: var(--spacing-md) var(--spacing-md) var(--spacing-md);
 }
 
-/* these are the rounded boxes that represent a section */
 .central_section {
     display: flex;
     flex-direction: column;
-    
-    /* should see whether i like it with or without this padding */
-    /* padding: 32pt 16pt 16pt 16pt; */
-    
     max-width: 600pt;
-    box-sizing: border-box;
     width: 100%;
-    margin-bottom: 16pt;
-    padding: 16pt;
-    
-    background-color: #2f2f2f;
-    border-color: gray;
-    border-style: solid;
-    border-radius: 4pt;
-    border-width: 1pt;
-    box-shadow: 0 0 4pt #0f0f0f;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    box-sizing: border-box;
+    background-color: var(--color-bg-tertiary);
+    border: 1pt solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2pt 8pt var(--color-shadow);
 }
 
+/* Code Blocks */
 .code_block {
-    background-color: #1a1a1a;
-    border-color: #4a4a4a;
-    border-width: 1pt;
-    border-style: solid;
-    border-radius: 4pt;
-
-    font-family: iosevka;
-
-    /*  right now we have margin-bottom set to 0pt, because it looks better and
-        we also don't have any text under the only codeblock on the site
-
-        it might be a good idea to get rid of that or at least experiment with other
-        options if we ever put a <p> underneath a codeblock
-    */
-    margin: 16pt 0pt 0pt;
-
+    background-color: var(--color-bg-secondary);
+    border: 1pt solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-family: iosevka, monospace;
     font-size: 12pt;
+    margin: var(--spacing-md) 0 0;
+    box-shadow: inset 0 0 16pt rgba(0, 0, 0, 0.25);
 }
 
-.code_block p, a {
-    margin-top: 16pt;
-    margin-left: 16pt;
+.code_block p,
+.code_block a {
+    margin-top: var(--spacing-md);
+    margin-left: var(--spacing-md);
     padding: 0;
 }
 
-.menu_bar {
-    display:flex;
-    align-items: stretch;
-    font-family: titleFonts;
+.code_block ul {
+    margin-left: var(--spacing-md);
+    padding-left: var(--spacing-md);
+}
 
+/* Projects */
+#projects_container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.project_item {
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-secondary);
+    border: 1pt solid var(--color-border);
+    border-radius: var(--border-radius);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.project_item:hover {
+    transform: translateY(-2pt);
+    box-shadow: 0 4pt 12pt var(--color-shadow);
+}
+
+.project_item h2 {
+    font-size: 18pt;
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.project_item p {
+    margin: 0;
+    color: var(--color-text-secondary);
+}
+
+/* Menu Bar */
+.menu_bar {
+    display: flex;
+    align-items: stretch;
+    font-family: titleFonts, serif;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: #1f1f1f;
-    box-shadow: 0 0 1em #121212;
+    background-color: var(--color-bg-secondary);
+    box-shadow: 0 0 1em var(--color-shadow);
+    z-index: 1000;
 }
 
 .menu_bar a {
-    color: white;
+    color: var(--color-text-primary);
     text-decoration: none;
     text-align: center;
     flex: 1;
-
-    /* This somehow works for vertically centering text? */
     line-height: 36pt;
     height: 36pt;
     margin: 0;
-    /* padding: 16px 0px; */
-    
-    transition: color 0.1s ease 0s;
-    transition: background-color 0.1s ease 0s;
-    transition: font-size 0.2s ease 0s;
+    transition: all var(--transition-speed) ease;
 }
 
 .menu_bar a:hover {
-    color: #1a1a1a;
-    background-color: white;
+    color: var(--color-bg-primary);
+    background-color: var(--color-text-primary);
     font-size: 16pt;
+}
+
+.text-center {
+    text-align: center;
 }
